@@ -1,4 +1,6 @@
-let modalQT = 1
+let modalQT = 1;
+let cart = [];
+let modalKey= 0;
 
 const c = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
@@ -19,6 +21,7 @@ pizzaJson.map((item, index) => {
 
     let key = e.target.closest('.pizza-item').getAttribute('data-key');
     modalQT = 1;
+    modalKey = key;
    //modalKey = key;
    
 
@@ -97,6 +100,23 @@ cs('.pizzaInfo--size').forEach((size, sizeIndex) => {
 
 
 });
+
+c('.pizzaInfo--addButton').addEventListener('click', ()=>{
+ 
+let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));
+
+cart.push({
+id: pizzaJson[modalKey].id,
+size:size,
+qt:modalQT
+
+});
+
+closeModal();
+
+
+   
+} );
 
 
 
